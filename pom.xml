@@ -58,5 +58,17 @@
   	  <enabled>true</enabled>
   	</snapshots>
 	</repository>
-	</repositories>
+   </repositories>
+<distributionManagement>
+	<repository>
+ 	 <id>lesambadu</id>
+ 	 <url>https://pkgs.dev.azure.com/lesambadu/_packaging/lesambadu/maven/v1</url>
+  	<releases>
+  	  <enabled>true</enabled>
+ 	 </releases>
+ 	 <snapshots>
+  	  <enabled>true</enabled>
+  	</snapshots>
+	</repository>
+</distributionManagement>
 </project>
