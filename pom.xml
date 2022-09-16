@@ -47,5 +47,16 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
-	
+  <repositories>
+	<repository>
+ 	 <id>lesambadu</id>
+ 	 <url>https://pkgs.dev.azure.com/lesambadu/_packaging/lesambadu/maven/v1</url>
+  	<releases>
+  	  <enabled>true</enabled>
+ 	 </releases>
+ 	 <snapshots>
+  	  <enabled>true</enabled>
+  	</snapshots>
+	</repository>
+	</repositories>
 </project>
