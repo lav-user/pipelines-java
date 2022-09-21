@@ -12,12 +12,8 @@ pool:
 steps:
 - script: |
     echo "Starting Pipeline Execution."
+   # Run Docker container with mount and run tests
 
-    # Set Up and write .properties file
-   
-    # Run Docker container with mount and run tests
-    echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
-    
     docker --version
 
     docker run -i \
