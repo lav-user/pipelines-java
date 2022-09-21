@@ -56,11 +56,7 @@ steps:
     
     docker --version
 
-    docker run --rm -d -p 4040:4040 -p 8090:8080 -p 9021:9001 -p 63616:61616 -p 8050:8050 --net=demo-net\
-    -e add-host=dev1.parasoft.com:host-gateway \
-    -e add-host=qa1.parasoft.com:host-gateway \
-    --name parabank-baseline \
-    lavanya93/parabank-baseline:2022 \
+    docker run --rm -d -p 4040:4040 -p 8090:8080 -p 9021:9001 -p 63616:61616 -p 8050:8050 --net=demo-net --add-host=dev1.parasoft.com:host-gateway --add-host=qa1.parasoft.com:host-gateway --name parabank-baseline lavanya93/parabank-baseline:2022 \
     
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
