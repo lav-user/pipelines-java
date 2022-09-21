@@ -12,12 +12,7 @@ pool:
 steps:
 - script: |
     echo "Starting Pipeline Execution."
-
-    # Set Up and write .properties file
-   
-    # Run Docker container with mount and run tests
-    echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
-    
+  # Run Docker container with mount and run tests
     docker --version
 
     docker run -i \
@@ -38,9 +33,3 @@ steps:
 # Publish Test Results
 
 - task: PublishParasoftTestResults@1
-  
-  displayName: Publish SOAtest Test Results
-  inputs:
-    testRunner: 'SOAtest9x'
-    testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
-# docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
