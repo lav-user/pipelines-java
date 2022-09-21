@@ -61,6 +61,7 @@ steps:
     -e add-host=qa1.parasoft.com:host-gateway \
     --name parabank-baseline \
     lavanya93/parabank-baseline:2022 \
+    
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
