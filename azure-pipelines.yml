@@ -13,7 +13,7 @@ steps:
 - script: |
     echo "Starting Pipeline Execution."
   # Run Docker container with mount and run tests
-    docker --version \
+  
     docker run -i \
     -u 0:0 \
     -e ACCEPT_EULA=true \
