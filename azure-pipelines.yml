@@ -8,15 +8,39 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+# Set Up Project
 steps:
-- task: Maven@3
+- script: |
+    echo "Starting Pipeline Execution."
+
+    # Set Up and write .properties file
+   
+    # Run Docker container with mount and run tests
+    echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
+    
+    docker --version
+
+    docker run -i \
+    -u 0:0 \
+    -e ACCEPT_EULA=true \
+    -v "$(pwd)/temp:/temp" \
+    lavanya93/parabank-baseline:2022 /bin/bash -c " \
+    
+    docker ps \
+    echo -e "\nDebug -- Verify ./temp contents\n"
+    ls -R $(pwd)/temp
+  displayName: Run Tests
+  env:
+    pwd: $(Build.Repository.LocalPath)
+  
+- publish: /home/vsts/work/1/s/temp
+  artifact: TSA
+# Publish Test Results
+
+- task: PublishParasoftTestResults@1
+  
+  displayName: Publish SOAtest Test Results
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    testRunner: 'SOAtest9x'
+    testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
+# docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
